@@ -7,9 +7,10 @@
     "node": "^12.8.0 || ^14.15.0 || >=15.0.0"
   },
   "bin": {
-    "bipolar": "./dist/bipolar.js"
+    "bipolar": "./bin/bipolar.js"
   },
   "files": [
+    "bin",
     "dist",
     "package.json"
   ],
