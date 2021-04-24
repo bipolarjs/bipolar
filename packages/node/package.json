@@ -3,6 +3,9 @@
   "version": "0.0.3",
   "description": "Bipolar test runner for node.js",
   "author": "tihonove <tihonov.ea@gmail.com>",
+  "engines": {
+    "node": "^12.8.0 || ^14.15.0 || >=15.0.0"
+  },
   "bin": {
     "bipolar": "./dist/bipolar.js"
   },
