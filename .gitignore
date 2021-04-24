@@ -1,0 +1,6 @@
+packages/meta/dist
+packages/meta/types
+packages/node/dist
+node_modules
+*.tsbuildinfo
+.idea/workspace.xml
