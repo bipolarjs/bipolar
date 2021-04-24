@@ -1,6 +1,6 @@
 {
   "name": "@bipolar/meta",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Bipolar functions and decorators for declaring test suites and cases",
   "author": "tihonove <tihonov.ea@gmail.com>",
   "license": "MIT",

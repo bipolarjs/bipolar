@@ -1,6 +1,6 @@
 {
   "name": "@bipolar/node",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Bipolar test runner for node.js",
   "author": "tihonove <tihonov.ea@gmail.com>",
   "engines": {
@@ -18,7 +18,7 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
-    "@bipolar/meta": "^0.0.3",
+    "@bipolar/meta": "^0.0.4",
     "@types/yargs": "^16.0.1",
     "glob": "^7.1.6",
     "webpack-cli": "^4.6.0",
