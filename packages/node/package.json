@@ -1,21 +1,24 @@
 {
   "name": "@bipolar/node",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Bipolar test runner for node.js",
   "author": "tihonove <tihonov.ea@gmail.com>",
   "bin": {
     "bipolar": "./dist/bipolar.js"
   },
-  "files": ["dist", "package.json"],
+  "files": [
+    "dist",
+    "package.json"
+  ],
   "scripts": {
     "build": "webpack --config webpack.bipolar.node.config.js",
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
-    "@bipolar/meta": "*",
-    "webpack-cli": "^4.6.0",
-    "yargs": "^16.2.0",
+    "@bipolar/meta": "^0.0.3",
     "@types/yargs": "^16.0.1",
-    "glob": "^7.1.6"
+    "glob": "^7.1.6",
+    "webpack-cli": "^4.6.0",
+    "yargs": "^16.2.0"
   }
 }
