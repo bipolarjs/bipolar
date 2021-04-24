@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/commons" },
+    { "path": "./packages/meta" },
+    { "path": "./packages/node" }
+  ]
+}

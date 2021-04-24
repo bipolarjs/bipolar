@@ -1,0 +1,24 @@
+{
+  "name": "@bipolar/meta",
+  "version": "0.0.2",
+  "description": "Bipolar functions and decorators for declaring test suites and cases",
+  "author": "tihonove <tihonov.ea@gmail.com>",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types",
+    "package.json"
+  ],
+  "scripts": {
+    "build:types": "tsc --noEmit false --declaration --emitDeclarationOnly --declarationDir ./types --outDir ./dist",
+    "build:main": "webpack --config webpack.bipolar.meta.config.js",
+    "build": "yarn build:types & yarn build:main",
+    "prepublishOnly": "yarn build"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4",
+    "webpack-cli": "^4.6.0"
+  }
+}

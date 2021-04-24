@@ -1,0 +1,27 @@
+{
+  "name": "bipolar",
+  "version": "0.0.1",
+  "private": true,
+  "description": "bipolar project workspace root",
+  "license": "MIT",
+  "workspaces": [
+    "packages/meta",
+    "packages/node"
+  ],
+  "scripts": {
+    "verify": "tsc -b packages/node packages/meta"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.13.15",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
+    "@babel/plugin-proposal-optional-chaining": "^7.13.12",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-typescript": "^7.13.0",
+    "babel-loader": "^8.2.2",
+    "lerna": "^4.0.0",
+    "typescript": "^4.2.4",
+    "webpack": "^5.35.1"
+  }
+}
