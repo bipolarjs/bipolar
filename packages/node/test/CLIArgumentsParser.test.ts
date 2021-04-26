@@ -1,21 +1,18 @@
 import { parseCLIArguments } from "../src/CLIArgumentsParser";
-import { expect } from "../../Engine/test/Engine/Expect";
+import { expect, describe, test } from "@jest/globals";
 
-@suite
-export class CLIArgumentsParserTest {
-    @test
-    public parseArgumentWithGlobsOnly(): void {
+describe('RunSuite', () => {
+    test("parseArgumentWithGlobsOnly", () => {
         const result = parseCLIArguments(["zzzz.ts"]);
-        expect(result.testFileGlobs).to.eql(["zzzz.ts"]);
-    }
+        expect(result.testFileGlobs).toEqual(["zzzz.ts"]);
+    });
 
-    @test
-    public parseRequireAsArray(): void {
-        expect(parseCLIArguments(["zzzz.ts"]).require).to.eql([]);
-        expect(parseCLIArguments(["zzzz.ts", "--require", "x.js"]).require).to.eql(["x.js"]);
-        expect(parseCLIArguments(["zzzz.ts", "--require", "x.js", "--require", "y.js"]).require).to.eql([
+    test("parseRequireAsArray", () => {
+        // expect(parseCLIArguments(["zzzz.ts"]).require).toEqual([]);
+        expect(parseCLIArguments(["zzzz.ts", "--require", "x.js"]).require).toEqual(["x.js"]);
+        expect(parseCLIArguments(["zzzz.ts", "--require", "x.js", "--require", "y.js"]).require).toEqual([
             "x.js",
-            "x.js",
+            "y.js",
         ]);
-    }
-}
+    });
+});

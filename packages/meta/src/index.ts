@@ -1,4 +1,4 @@
-const suiteMetadataAttr = Symbol.for("bipolar:SuiteMetadata");
+export const suiteMetadataAttr = Symbol.for("bipolar:SuiteMetadata");
 
 export interface SuiteMetadataContainer {
     [suiteMetadataAttr]?: SuiteMetadata;

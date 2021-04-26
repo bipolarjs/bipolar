@@ -12,14 +12,26 @@ export function parseCLIArguments(argv: string[]): CLIOptions {
         .options({
             require: {
                 alias: "r",
-                type: "array",
+                type: "string",
                 description: "Require module before all test starts",
-                default: [],
+            },
+            webstorm: {
+                type: "boolean",
+                requiresArg: false,
+                description: "Require module before all test starts",
             },
         })
         .parse();
+    let requireValue = yargsParseResult.require;
+    if (yargsParseResult.webstorm != undefined) {
+        requireValue = "./Tests/SetupMocha.js";
+        return {
+            testFileGlobs: yargsParseResult._.map(x => x.toString()),
+            require: Array.isArray(requireValue) ? requireValue : (typeof requireValue === "string" ? [requireValue] : []),
+        };
+    }
     return {
         testFileGlobs: yargsParseResult._.map(x => x.toString()),
-        require: yargsParseResult.require,
+        require: Array.isArray(requireValue) ? requireValue : (typeof requireValue === "string" ? [requireValue] : []),
     };
 }

@@ -1,13 +1,6 @@
 import { describe, expect, test } from "@jest/globals"
 import { suite as localSuite, test as localTest } from "@bipolar/meta";
-import {
-    IExecutionReporter,
-    RunContext,
-    SuiteExecutionResult,
-    SuiteHandle,
-    TestExecutionResult,
-    TestHandle,
-} from "../src/IExecutionReporter";
+import { RunContext, } from "../src/IExecutionReporter";
 import { SuiteRunner } from "../src/SuiteRunner";
 
 
@@ -75,31 +68,16 @@ describe('RunSuite', () => {
     }
 });
 
-class EventLogReporter implements IExecutionReporter {
-    public readonly eventLog: string[] = [];
 
-    public onStartRun(context: RunContext): void | Promise<void> {
-        this.eventLog.push("StartRun");
-    }
+// ##teamcity[enteredTheMatrix]
 
-    public onFinishRun(context: RunContext): void | Promise<void> {
-        this.eventLog.push("FinishRun");
-    }
-
-    public onStartSuite(suite: SuiteHandle): void | Promise<void> {
-        this.eventLog.push(`StartSuite: ${suite.name}`);
-    }
-
-    public onFinishSuite(suite: SuiteHandle, suiteResult: SuiteExecutionResult): void | Promise<void> {
-        this.eventLog.push(`FinishSuite: ${suite.name}. ${suiteResult.status}`);
-    }
-
-    public onStartTest(test: TestHandle): void | Promise<void> {
-        this.eventLog.push(`StartTest: ${test.suite.name}.${test.name}.`);
-    }
-
-    public onFinishTest(test: TestHandle, testResult: TestExecutionResult): void | Promise<void> {
-        this.eventLog.push(`FinishTest: ${test.suite.name}.${test.name}. ${testResult.status}`);
-    }
-}
-
+// ##teamcity[testCount count='1']
+// ##teamcity[testSuiteStarted
+//      nodeId='16776_68872_767484500-1'
+//      parentNodeId='C:\workspace\keforms\keforms.engine\Engine\test\Engine\PathUtils.test.ts'
+//      name='PathUtilsTest'
+//      running='true'
+//      nodeType='suite'
+//      locationHint='suite://C:\\workspace\\keforms\\keforms\.engine\\Engine\\test\\Engine\\PathUtils\.test\.ts.PathUtilsTest']
+// ##teamcity[testStarted nodeId='16776_68872_767484500-2' parentNodeId='16776_68872_767484500-1' name='testGetAbsolutePath' running='true' nodeType='test' locationHint='test://C:\\workspace\\keforms\\keforms\.engine\\Engine\\test\\Engine\\PathUtils\.test\.ts.PathUtilsTest.testGetAbsolutePath']
+// ##teamcity[testSuiteFinished nodeId='C:\workspace\keforms\keforms.engine\Engine\test\Engine\PathUtils.test.ts']

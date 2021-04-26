@@ -25,5 +25,5 @@ module.exports = {
         extensions: [".ts", ".js"],
         mainFields: ["main"],
     },
-    devtool: "nosources-source-map",
+    devtool: false,
 };

@@ -4,7 +4,9 @@ export interface RunContext {
 
 export interface SuiteHandle {
     context: RunContext;
+    tests: TestHandle[];
     name: string;
+    filePath: string;
 }
 
 export interface TestHandle {

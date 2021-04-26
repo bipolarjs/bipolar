@@ -15,6 +15,7 @@
     "build:types": "tsc --noEmit false --declaration --emitDeclarationOnly --declarationDir ./types --outDir ./dist",
     "build:main": "webpack --config webpack.bipolar.meta.config.js",
     "build": "yarn build:types & yarn build:main",
+    "watch": "webpack --config webpack.bipolar.meta.config.js --watch",
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {

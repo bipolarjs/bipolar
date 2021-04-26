@@ -5,12 +5,14 @@
     "composite": true,
     "noEmit": true,
     "rootDir": ".",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "experimentalDecorators": true
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "test/FunctionalTests/TestFiles/**/*"
   ]
 }

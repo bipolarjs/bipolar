@@ -7,6 +7,7 @@ import { parseCLIArguments } from "./CLIArgumentsParser";
 import { SuiteMetadataContainer, suite, suiteMetadataAttr, test } from "@bipolar/meta";
 import { SpecReporter } from "./SpecReporter";
 import { SuiteRunner } from "./SuiteRunner";
+import { WebStormReporter } from "./WebStormReporter";
 
 const globAsync = promisify(glob);
 
@@ -20,21 +21,23 @@ async function entryPoint(argv: string[]): Promise<void> {
     const filesToExecute = [];
     for (const testFileGlob of options.testFileGlobs) {
         const files = await globAsync(testFileGlob, { cwd: process.cwd() });
-        filesToExecute.push(...files.map(x => path.join(process.cwd(), x)));
+        filesToExecute.push(...files.map(x => {
+            return  path.isAbsolute(x) ? x : path.join(process.cwd(), x)
+        }));
     }
 
     for (const requireModulePath of options.require) {
-        eval(`require(${JSON.stringify(path.join(process.cwd(), requireModulePath))})`);
+        let fullPath = path.isAbsolute(requireModulePath) ? requireModulePath : path.join(process.cwd(), requireModulePath);
+        eval(`require(${JSON.stringify(fullPath)})`);
     }
-    const reporter = new SpecReporter();
+    // const reporter = new SpecReporter();
+    const reporter = new WebStormReporter();
 
     for (const file of filesToExecute) {
-        global["test"] = test;
-        global["suite"] = suite;
         const testModule = eval(`require(${JSON.stringify(file)})`);
         for (const testClass of Object.values(testModule)) {
             if (isTestSuite(testClass)) {
-                const runner = new SuiteRunner(testClass, reporter);
+                const runner = new SuiteRunner(testClass, file, reporter);
                 await runner.run({});
             }
         }
